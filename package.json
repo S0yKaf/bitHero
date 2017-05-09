@@ -1,0 +1,30 @@
+{
+  "name": "bithero",
+  "version": "0.0.1",
+  "description": "your very own twitch adventure",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Kiniamaro/bitHero.git"
+  },
+  "keywords": [
+    "twitch.tv"
+  ],
+  "author": "kiniamaro (vdyotte@gmail.com)",
+  "license": "GPL-2.0",
+  "bugs": {
+    "url": "https://github.com/Kiniamaro/bitHero/issues"
+  },
+  "homepage": "https://github.com/Kiniamaro/bitHero#readme",
+  "dependencies": {
+    "body-parser": "^1.17.1",
+    "express": "4.15.2",
+    "sequelize": "^3.30.4"
+  },
+  "devDependencies": {
+    "sequelize-cli": "^2.7.0"
+  }
+}
