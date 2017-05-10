@@ -22,6 +22,7 @@ const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 const models = require('./models');
+
 // MiddleWares
 app.use(bodyParser.json());
 
@@ -34,14 +35,14 @@ app.use('/', routes);
 const PORT = 4200;
 
 models.sequelize.sync().then(() => {
-    // Server start
-    app.listen(PORT, (err) => {
-        if (err) {
-            console.log(err);
-        } else {
-            console.log(`Express server listening on port ${PORT}`);
-        }
-    });
+  // Server start
+  app.listen(PORT, (err) => {
+    if (err) {
+      console.log(err);
+    } else {
+      console.log(`Express server listening on port ${PORT}`);
+    }
+  });
 });
 
 
