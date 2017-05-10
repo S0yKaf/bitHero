@@ -21,7 +21,7 @@
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
-const models = require('./models');
+const models = require('./database/models');
 
 // MiddleWares
 app.use(bodyParser.json());

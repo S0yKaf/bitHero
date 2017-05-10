@@ -10,8 +10,12 @@ module.exports = function(sequelize, DataTypes) {
     },
     username: {
       type: DataTypes.STRING(255),
-      allowNull: false,
+      allowNull: true,
       unique: true
+    },
+    access_token: {
+      type: DataTypes.STRING(32),
+      allowNull: false,
     }
   }, {
     classMethods: {

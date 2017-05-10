@@ -8,4 +8,8 @@ routes.get('/', (req, res) => {
   });
 });
 
+routes.post('/twitch-oauth', (req, res) => {
+  // TODO
+});
+
 module.exports = routes;
