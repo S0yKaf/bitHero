@@ -2,14 +2,16 @@
 
 const routes = require('express').Router();
 
+const twitchOauth = require('../api/twitchOauth').handler;
+
 routes.get('/', (req, res) => {
   res.status(200).json({
-    content : 'If you can read this, then the Express Server is working as intended.'
+    content: 'If you can read this, then the Express Server is working as intended.'
   });
 });
 
-routes.post('/twitch-oauth', (req, res) => {
-  // TODO
+routes.get('/twitch-oauth', (req, res) => {
+  return twitchOauth(req, res);
 });
 
 module.exports = routes;
