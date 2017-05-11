@@ -22,15 +22,49 @@ const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 const models = require('./database/models');
+const passport = require('passport');
+const TwitchStrategy = require('passport-twitch').Strategy;
+
+const User = require('./database/models').User;
+
+const config = require('./config.json');
 
 // MiddleWares
 app.use(bodyParser.json());
+app.use(passport.initialize());
 
 // Routes
 const routes = require('./routes/routes');
 
 //  Connect all our routes to our application
 app.use('/', routes);
+
+passport.use(
+  new TwitchStrategy({
+    clientID: config.twitch.clientID,
+    clientSecret: config.twitch.clientSecret,
+    callbackURL: 'http://localhost:4200/auth/twitch/callback',
+    scope: 'user_read'
+  },
+  function(accessToken, refreshToken, profile, done) {
+    User.findOrCreate({
+      where: {
+        twitch_id: profile.id
+      }
+    }).spread((user, created) => {
+      if (created) {
+        user.update({
+          access_token: accessToken,
+          username: profile.username,
+          display_name: profile.display_name,
+          email: profile.email,
+          logo: profile._json.logo
+        });
+      }
+    });
+    return done();
+  })
+);
 
 const PORT = 4200;
 

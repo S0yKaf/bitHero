@@ -8,14 +8,39 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false,
       autoIncrement: true
     },
+    twitch_id: {
+      type: DataTypes.INTEGER,
+      allowNull: true,
+      unique: true
+    },
+    display_name: {
+      type: DataTypes.STRING(),
+      allowNull: true,
+    },
     username: {
       type: DataTypes.STRING(255),
       allowNull: true,
       unique: true
     },
+    email: {
+      type: DataTypes.STRING(),
+      allowNull: true,
+    },
     access_token: {
-      type: DataTypes.STRING(32),
-      allowNull: false,
+      type: DataTypes.STRING(),
+      allowNull: true,
+    },
+    refresh_token: {
+      type: DataTypes.STRING(),
+      allowNull: true,
+    },
+    logo: {
+      type: DataTypes.STRING(),
+      allowNull: true
+    },
+    channel: {
+      type: DataTypes.STRING(),
+      allowNull: true
     }
   }, {
     classMethods: {

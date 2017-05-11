@@ -1,8 +1,7 @@
 'use strict';
 
 const routes = require('express').Router();
-
-const twitchOauth = require('../api/twitchOauth').handler;
+const passport = require('passport');
 
 routes.get('/', (req, res) => {
   res.status(200).json({
@@ -10,8 +9,10 @@ routes.get('/', (req, res) => {
   });
 });
 
-routes.get('/twitch-oauth', (req, res) => {
-  return twitchOauth(req, res);
+
+routes.get('/auth/twitch', passport.authenticate('twitch'));
+routes.get('/auth/twitch/callback', passport.authenticate('twitch', {failureRedirect: '/'}), (req, res) => {
+  res.redirect('/');
 });
 
 module.exports = routes;
