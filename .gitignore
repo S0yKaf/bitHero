@@ -60,3 +60,4 @@ typings/
 config/config.json
 db.sqlite
 config.json
+public/dist
