@@ -20,11 +20,23 @@
   },
   "homepage": "https://github.com/Kiniamaro/bitHero#readme",
   "dependencies": {
+    "@angular/common": "^4.1.2",
+    "@angular/compiler": "^4.1.2",
+    "@angular/core": "^4.1.2",
+    "@angular/forms": "^4.1.2",
+    "@angular/http": "^4.1.2",
+    "@angular/platform-browser": "^4.1.2",
+    "@angular/platform-browser-dynamic": "^4.1.2",
+    "@angular/router": "^4.1.2",
+    "@angular/upgrade": "^4.1.2",
     "body-parser": "^1.17.1",
+    "bulma": "^0.4.1",
     "express": "4.15.2",
     "passport": "^0.3.2",
     "passport-twitch": "^1.0.3",
-    "sequelize": "^3.30.4"
+    "rxjs": "^5.4.0",
+    "sequelize": "^3.30.4",
+    "zone.js": "^0.8.10"
   },
   "devDependencies": {
     "babel": "^6.23.0",
