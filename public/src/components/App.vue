@@ -26,17 +26,7 @@ export default {
 </script>
 
 <style lang="scss">
-@import url('https://fonts.googleapis.com/css?family=Roboto+Mono|VT323');
-@import "../node_modules/bulma/sass/utilities/initial-variables";
-
-$purple: #7b49fc;
-
-$primary: $purple; // purple ish
-$family-primary: "VT323", monospace;
-
-
-@import "../node_modules/bulma/bulma";
-
+@import "~styles/global.scss";
 body {
   display: flex;
   min-height: 100vh;
