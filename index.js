@@ -43,7 +43,7 @@ passport.use(
   new TwitchStrategy({
     clientID: config.twitch.clientID,
     clientSecret: config.twitch.clientSecret,
-    callbackURL: 'http://localhost:4200/auth/twitch/callback',
+    callbackURL: 'http://bithero.xyz/api/auth/twitch/callback',
     scope: 'user_read'
   },
   function(accessToken, refreshToken, profile, done) {
@@ -66,7 +66,7 @@ passport.use(
   })
 );
 
-const PORT = 4200;
+const PORT = 4201;
 
 models.sequelize.sync().then(() => {
   // Server start
