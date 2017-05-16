@@ -29,15 +29,20 @@ const User = require('./database/models').User;
 
 const config = require('./config.json');
 
+const routes = require('./routes/routes');
+
 // MiddleWares
 app.use(bodyParser.json());
 app.use(passport.initialize());
-
-// Routes
-const routes = require('./routes/routes');
-
-//  Connect all our routes to our application
 app.use('/', routes);
+
+passport.serializeUser(function(user, done) {
+  done(null, user);
+});
+
+passport.deserializeUser(function(obj, done) {
+  done(null, obj);
+});
 
 passport.use(
   new TwitchStrategy({
@@ -52,17 +57,15 @@ passport.use(
         twitch_id: profile.id
       }
     }).spread((user, created) => {
-      if (created) {
         user.update({
           access_token: accessToken,
           username: profile.username,
-          display_name: profile.display_name,
+          display_name: profile.display_name || profile.username,
           email: profile.email,
           logo: profile._json.logo
         });
-      }
+        return done(null, accessToken);
     });
-    return done();
   })
 );
 
