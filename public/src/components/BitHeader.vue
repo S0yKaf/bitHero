@@ -69,7 +69,13 @@ h1 {
   color: $purple;
 }
 
-// .navbar { position: fixed !important; top: 0; left: 0; right: 0; }
+.navbar {
+  position: fixed !important;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 9000;
+}
 
 .header {
   background-color: $dark !important;
