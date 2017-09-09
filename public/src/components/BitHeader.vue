@@ -3,7 +3,7 @@
     <nav class="header navbar">
       <div class="navbar-brand">
         <router-link to="/" class="navbar-item">
-          <h1 class="title is-2">bitHero</h1>
+          <h1 id="brand" class="is-size-3">bitHero.xyz</h1>
         </router-link>
       </div>
       <!-- This "navbar-menu" is hidden on mobile -->
@@ -24,9 +24,9 @@
           </div>
 
           <div v-else class="navbar-item has-dropdown is-hoverable">
-            <a class="navbar-link  is-active" href="#">
+            <a class="navbar-link is-active is-user" href="#">
               <img class="avatar" v-bind:src="user.logo">
-              <p>&nbspHello!, {{user.display_name}}</p>
+              <p>&nbsp{{user.display_name}}</p>
             </a>
             <div class="navbar-dropdown">
               <a class="navbar-item " href="/api/logout">
@@ -65,22 +65,26 @@ export default {
 <style lang="scss">
 @import "~styles/global.scss";
 
-h1 {
-  color: $purple;
+#brand {
+  color: $primary;
+  font-family: "VT323", monospace;
+  font-weight: 600;
+}
+
+.is-user {
+  font-weight: 600;
+  color: $primary !important;
 }
 
 .navbar {
+  padding-right: 1vh;
+  padding-left: 1vh;
   position: fixed !important;
   top: 0;
   left: 0;
   right: 0;
   z-index: 9000;
 }
-
-.header {
-  background-color: $dark !important;
-}
-
 .avatar {
   border-radius: 50%;
 }

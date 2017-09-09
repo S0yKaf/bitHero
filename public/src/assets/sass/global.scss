@@ -1,12 +1,24 @@
 
-@import url('https://fonts.googleapis.com/css?family=Roboto+Mono|VT323');
+@import url('https://fonts.googleapis.com/css?family=Inconsolata|Roboto+Mono|VT323');
 @import "../node_modules/bulma/sass/utilities/initial-variables";
 
 $purple: #7b49fc;
 $dark: #24292E;
 
 $primary: $purple; // purple ish
+$family-sans-serif: "Inconsolata";
 $family-primary: "VT323", monospace;
 
+$nav-hover: lighten($dark, 5);
+
+$background: $dark;
+
+$navbar-background-color: $dark;
+$navbar-item-hover-background-color: $nav-hover;
+$navbar-item-active-color: lighten($nav-hover, 15);
+$navbar-dropdown-background-color: $nav-hover;
+$navbar-dropdown-item-hover-color: lighten($nav-hover, 15);
+$navbar-dropdown-item-hover-background-color: lighten($nav-hover, 5);
+$navbar-divider-background-color: $dark;
 
 @import "../node_modules/bulma/bulma";
