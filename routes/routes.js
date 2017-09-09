@@ -9,12 +9,19 @@ routes.get('/', (req, res) => {
   });
 });
 
-
-routes.get('/auth/twitch', passport.authenticate('twitch'));
-routes.get('/auth/twitch/callback', passport.authenticate('twitch', {failureRedirect: '/'}), (req, res) => {
-  res.cookie('token', req.session.passport.user, {
-    expires: new Date(Date.now() + (7776000 * 1000)) // 3 months from now
+routes.get('/user', ensureAuthenticated, (req, res) => {
+  res.status(200).json({
+    session: req.session.passport.user
   });
+});
+
+routes.get('/logout', function(req, res){
+  req.logout();
+  res.redirect('/');
+});
+
+routes.get('/auth/twitch', passport.authenticate('twitch', {forceVerify: true}));
+routes.get('/auth/twitch/callback', passport.authenticate('twitch', {failureRedirect: '/api/auth/twitch'}), (req, res) => {
   res.redirect('/');
 });
 
@@ -24,7 +31,7 @@ function ensureAuthenticated(req, res, next) {
   if (req.isAuthenticated()) {
     return next();
   }
-  res.redirect('/login');
+  res.redirect('/api/auth/twitch');
 }
 
 module.exports = routes;

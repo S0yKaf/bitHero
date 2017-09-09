@@ -1,5 +1,5 @@
 <template>
-  <footer class="footer">
+  <footer class="footer bit-footer">
     <div class="container">
       <div class="content has-text-centered">
         <p>
@@ -20,9 +20,15 @@
 <script>
 export default {
   name: 'bit-footer',
-  data () {}
+  data () { return {}}
 }
 </script>
 
-<style>
+<style lang="scss">
+@import "~styles/global.scss";
+
+.bit-footer {
+  background-color: darken($dark, 2);
+}
+
 </style>

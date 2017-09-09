@@ -21,6 +21,7 @@
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
+const session = require('express-session');
 const models = require('./database/models');
 const passport = require('passport');
 const TwitchStrategy = require('passport-twitch').Strategy;
@@ -33,7 +34,13 @@ const routes = require('./routes/routes');
 
 // MiddleWares
 app.use(bodyParser.json());
+app.use(session({
+  secret: 'all your base are belong to us.',
+  resave: true,
+  saveUninitialized: true
+}));
 app.use(passport.initialize());
+app.use(passport.session());
 app.use('/', routes);
 
 passport.serializeUser(function(user, done) {
@@ -59,12 +66,13 @@ passport.use(
     }).spread((user, created) => {
         user.update({
           access_token: accessToken,
+          refresh_token: refreshToken,
           username: profile.username,
           display_name: profile.display_name || profile.username,
           email: profile.email,
           logo: profile._json.logo
         });
-        return done(null, accessToken);
+        return done(null, user);
     });
   })
 );
