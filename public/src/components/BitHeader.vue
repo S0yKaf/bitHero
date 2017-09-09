@@ -97,8 +97,13 @@ export default {
   right: 0;
   z-index: 9000;
 }
+
+
+
 .avatar {
-  border-radius: 50%;
+  min-height: 32px;
+  width: 32px;
+  border-radius: 10%;
 }
 
 </style>
