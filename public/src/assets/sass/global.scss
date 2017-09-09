@@ -9,11 +9,14 @@ $primary: $purple; // purple ish
 $family-sans-serif: "Inconsolata";
 $family-primary: "VT323", monospace;
 
+$link-hover: lighten($primary, 10);
 $nav-hover: lighten($dark, 5);
 
-$background: $dark;
+$background: darken($dark, 2);
 
 $navbar-background-color: $dark;
+$navbar-item-color: lighten($nav-hover, 15);
+$navbar-item-hover-color: $navbar-item-color;
 $navbar-item-hover-background-color: $nav-hover;
 $navbar-item-active-color: lighten($nav-hover, 15);
 $navbar-dropdown-background-color: $nav-hover;

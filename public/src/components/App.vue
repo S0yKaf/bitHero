@@ -1,6 +1,7 @@
 <template>
   <div id="app">
     <bit-header></bit-header>
+    <div id="blockHack"></div>
     <router-view id="wrapper"></router-view>
     <bit-footer></bit-footer>
   </div>
@@ -31,7 +32,11 @@ body {
   display: flex;
   min-height: 100vh;
   flex-direction: column;
-  background-color: $dark;
+  background-color: $background;
+}
+
+#blockHack {
+  min-height: 4rem;
 }
 
 #wrapper {
