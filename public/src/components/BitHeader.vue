@@ -98,8 +98,6 @@ export default {
   z-index: 9000;
 }
 
-
-
 .avatar {
   min-height: 32px;
   width: 32px;
