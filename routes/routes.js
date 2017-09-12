@@ -24,9 +24,11 @@ routes.get('/logout', function(req, res){
 });
 
 routes.get('/connect', ensureAuthenticated, (req, res) => {
-  var client = new PubSubClient(0);
-  client.addUser(req.session.passport.user.twitch_id, req.session.passport.user.access_token);
+  var client = new PubSubClient(0, req.session.passport.user.twitch_id, req.session.passport.user.access_token);
   clients.push(client);
+  res.status(200).json({
+    content: 'connection created'
+  });
 });
 
 routes.get('/auth/twitch', passport.authenticate('twitch', {forceVerify: true}));

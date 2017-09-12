@@ -5,14 +5,15 @@ const ws = require('ws');
 const maxListens = 50;
 class PubSubClient {
 
-  constructor(id) {
+  constructor(id, twitchId, authToken) {
     this.status = 'DISCONNECTED';
     this.id = id;
-    this.slots = 0;
+    this.slots = 2;
     this.ws = new ws('wss://pubsub-edge.twitch.tv');
 
     this.ws.on('open', () => {
       this.status = 'CONNECTING';
+      this.addUser(twitchId, authToken);
     });
 
     this.ws.on('message', (data) => {
@@ -30,7 +31,7 @@ class PubSubClient {
         "auth_token": authToken
       }
     }
-    this.ws.send(message)
+    this.ws.send(JSON.stringify(message));
   }
 
   removeUser() {
