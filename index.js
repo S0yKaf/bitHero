@@ -56,7 +56,7 @@ passport.use(
     clientID: config.twitch.clientID,
     clientSecret: config.twitch.clientSecret,
     callbackURL: 'http://bithero.xyz/api/auth/twitch/callback',
-    scope: 'user_read'
+    scope: ['user_read', 'channel_check_subscription']
   },
   function(accessToken, refreshToken, profile, done) {
     User.findOrCreate({
